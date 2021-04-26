@@ -10,7 +10,7 @@ import 'mint-ui/lib/style.css'
 import VueTouch from 'vue-touch'
 Vue.use(VueTouch,{name: 'v-touch'})
 
-axios.defaults.baseURL = 'http://localhost:3000/'   //加前缀
+axios.defaults.baseURL = 'http://localhost:8254/'   //加前缀
 axios.defaults.withCredentials = true   //允许跨域
 global.axios = axios    //全局化
 

@@ -123,7 +123,6 @@ export default {
 .bought {
   width: 100%;
   top: 2.8rem;
-  bottom: 0;
   position: absolute;
   overflow: hidden;
   font-size: 12px;

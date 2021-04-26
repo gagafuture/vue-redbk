@@ -100,7 +100,6 @@ export default {
 .note_page {
   width: 100%;
   top: 0;
-  bottom: 0;
   background: #fff;
   overflow: hidden;
   position: absolute;

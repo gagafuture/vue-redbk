@@ -86,7 +86,7 @@ export default {
         return {
             user: []
         }
-    }
+    },
 }
 </script>
 <style lang="stylus" rel="stylesheet/stylus" scoped>

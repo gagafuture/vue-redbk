@@ -114,7 +114,6 @@ export default {
 .att-wrapper
   width 100%
   top 2.62rem
-  bottom 0
   position absolute
   overflow hidden
   .attContainer
