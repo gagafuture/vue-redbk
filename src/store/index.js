@@ -11,7 +11,10 @@ Vue.use(Vuex)
 
 const state = {
     isNav: true,
-    popupVisible: false
+    popupVisible: false,
+    auth:"",
+    isShow:false,
+    isShowUpload:false
 }
 
 export default new Vuex.Store({

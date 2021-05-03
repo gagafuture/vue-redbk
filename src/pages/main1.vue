@@ -1,8 +1,11 @@
 <template>
   <div class="att-wrapper" ref="attWrapper">
     <div class="attContainer">
+      <div class="title">我的分享</div>
       <div class="content">
-        <img src="../assets/noattent.png" alt="">
+        <div class="m1_content">
+          <router-view></router-view>
+        </div>
       </div>
       <div class="title">大家都在关注</div>
       <div class="attent-list">
@@ -28,6 +31,7 @@
 </template>
 <script>
 import BScroll from 'better-scroll'
+import page1 from './children/page1'
 export default {
   data () {
     return {
@@ -95,6 +99,9 @@ export default {
       ]
     }
   },
+  components:{
+    page1
+  },
   methods: {
     _initScroll () {
       this.attentScroll = new BScroll(this.$refs.attWrapper, {
@@ -104,6 +111,7 @@ export default {
     }
   },
   created () {
+    this.$router.push({name: 'main1/page1', params: { id: '-1' }})
     this.$nextTick( () => {
       this._initScroll()
     })
@@ -120,7 +128,9 @@ export default {
     width 100%
     // min-height 200%
     .content
+      overflow auto
       width 100%
+      height 700px
       img 
         width 100%
     .title

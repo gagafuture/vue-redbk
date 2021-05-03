@@ -8,12 +8,22 @@ export const showPopup = ({ commit }) => {
 export const hidePopup = ({ commit }) => {
     commit(types.HIDEPOPUP)
 }
+export const isShow = ({ commit },type) =>{
+    commit(types.ISSHOW,type)
+}
 export const addToCart = ({ commit }, { Goods,quantity }) => {
     // console.log(quantity)
-    if (Goods.inventory>0) {
+    if (quantity>0) {
         commit(types.ADD_TO_CART, {
-            id: Goods.id,
+            id: Goods.pid,
             quantity: quantity
         })
     }
+}
+export const author = ({ commit },{userName,imageUrl,pid}) =>{
+    commit(types.AUTH,{userName,imageUrl,pid})
+}
+
+export const isShowUpload = ({ commit },type)=>{
+    commit(types.ISSHOWUPLOAD,type)
 }

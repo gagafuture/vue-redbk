@@ -24,7 +24,7 @@ const getters = {
         return rl
     },
     Goods: state => state.choosedgoods,
-    title: state => (state.choosedgoods.title || "").split(" ").shift()
+    title: state => (state.choosedgoods.commodityName || "").split(" ").shift()
 }
 
 const actions = {

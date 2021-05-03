@@ -1,5 +1,6 @@
 <template>
   <div class="navbar">
+    <upload />
     <mt-popup v-model="popupVisible" position="left">
       <panel></panel>
     </mt-popup>
@@ -13,7 +14,7 @@
         <div class="nav_center">
           <ul class="nav_tab">
             <li class="tab-item">
-              <router-link to="/main1">关注</router-link>
+              <router-link to="/main1">我的</router-link>
             </li>
             <li class="tab-item">
               <router-link to="/main2">发现</router-link>
@@ -24,13 +25,13 @@
           </ul>
         </div>
         <div class="nav_right">
-          <img src="../assets/camera.png" alt="">
+          <img src="../assets/camera.png" @click="share" alt="">
         </div>
       </div>
       <div class="search">
           <div class="search-input">
             <img src="../assets/search.png" />
-            <input type="text" placeholder="搜索笔记、商品和用户" @focus="focus()">
+            <input type="text" placeholder="搜索笔记、商品和用户" @click="focus()">
           </div>
       </div>
     </div>
@@ -38,6 +39,7 @@
 </template>
 <script>
 import Panel from './Panel.vue'
+import upload from './Upload.vue'
 export default {
   data() {
     return {
@@ -47,10 +49,15 @@ export default {
   methods: {
     focus () {    //搜索框聚焦则跳转到搜索页面
       this.$router.push('/search')
+    },
+    share () {
+      console.log(11)
+      this.$store.dispatch("isShowUpload",true)
     }
   },
   components: {
-    Panel
+    Panel,
+    upload
   },
   created () {
     this.$router.push('/main2')

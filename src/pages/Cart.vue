@@ -1,8 +1,8 @@
 <template>
   <div class="cart_page">
       <div class="cart-header">
-          <span class="left">
-              <img src="../assets/l-arrow.png" @click="hideCart">
+          <span class="left"  @click="hideCart">
+              <img src="../assets/l-arrow.png">
           </span>
           <span class="text">我的购物车</span>
       </div>
@@ -12,18 +12,14 @@
       </div>
       <div class="cart-content" :class="hasPro?'':'isHidden'" ref="cartWrapper">
           <ul>
-            <li v-for="(p,index) in products">
+            <li v-for="(p,index) in products" :key="index">
                 <div class="cart-item">
-                    <div class="header">
-                        <button class="btn" :class="isChoosed?'isActive':''" @click="isChoosed=!isChoosed"></button>
-                        <h2>{{p.bName}}</h2> 
-                    </div>
                     <div class="content">
                         <div class="left">
                             <button class="btn" :class="isChoosed?'isActive':''" @click="isChoosed=!isChoosed"></button>
                         </div>
                         <div class="img">
-                            <img :src="p.img" alt="">
+                            <img :src="'http://localhost:8254/image/'+p.img" alt="">
                         </div>
                         <div class="detail">
                             <div class="title">{{p.title}}</div>
@@ -58,7 +54,7 @@
           </span>
           <span class="t-price">总计(含税):<span>￥{{totalPrice}}</span></span>
           <span class="b-account">
-              <button @click="account">结算</button>
+              <button @click="account()">结算</button>
           </span>
       </div>
       
@@ -95,7 +91,8 @@ export default {
   },
   methods: {
       hideCart () {
-          this.$router.push('/main3')
+        //   console.log("11")
+          this.$router.back()
       },
       selectedBrand (index) {
           this.choosedItem = index
@@ -216,7 +213,6 @@ export default {
         .text
             flex 1
             text-align center
-            margin-left -0.63rem
     .cart_no_item
         top 60px
         position absolute

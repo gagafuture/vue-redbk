@@ -3,8 +3,8 @@
         <div class="m2_header">
             <swiper :options="swiperOption" class="swiper-box">
                 <swiper-slide class="swiper-item" v-for="(item,index) in navs" >
-                    <div class="opt-item" @click="selectPage(index)" :class="chooseItem==index?'isActive':''">
-                        {{item}}
+                    <div class="opt-item" @click="selectPage(item.value,index)" :class="chooseItem==index?'isActive':''">
+                        {{item.label}}
                     </div>
                 </swiper-slide>
                 <div class="swiper-pagination" slot="pagination"></div>
@@ -22,7 +22,16 @@ import { Indicator } from 'mint-ui'
 export default {
     data () {
         return {
-            navs: ['推荐','视频','时尚','美妆','美食','运动','影音','旅行','居家','母婴'],
+            navs: [{
+                    value: '0',
+                    label: '全部'
+                },{
+                    value: '1',
+                    label: '特色'
+                    }, {
+                    value: '2',
+                    label: '家常'
+                    }],
             chooseItem: '',
             swiperOption: {
                 pagination: '.swiper-pagination',
@@ -34,11 +43,10 @@ export default {
         }
     },
     methods: {
-         selectPage (index) {
+         selectPage (value,index) {
              Indicator.open()
              this.chooseItem = index
-             index = index + 1
-             this.$router.push('/main2/page' + index)
+             this.$router.push({name:'page1', params:{id:value}})
              setTimeout(() => Indicator.close(), 1000)
          }
     },
@@ -47,7 +55,7 @@ export default {
         swiperSlide
     },
     created() {
-        this.$router.push('/main2/page1')
+        this.$router.push({name: 'main2/page1', params: { id: '0' }})
     }
 }
 </script>

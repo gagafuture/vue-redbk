@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <navbar v-show="isNav"></navbar>
+    <login/>
     <v-touch 
         v-on:swipeleft="onSwipeLeft" 
         v-on:swiperight="onSwipeRight" 
@@ -10,6 +11,7 @@
   </div>
 </template>
 <script>
+import login from './pages/login/login'
 import navbar from './components/navBar.vue'
 export default {
   computed: {
@@ -40,7 +42,8 @@ export default {
     }
   },
   components: {
-    navbar
+    navbar,
+    login
   },
   watch: {
     '$route' () {
@@ -55,4 +58,5 @@ export default {
 *
   margin 0
   padding 0
+  touch-action none
 </style>

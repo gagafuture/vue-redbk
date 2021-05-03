@@ -40,7 +40,7 @@ export default {
     },
   methods: {
       searchCancel () {
-          this.$router.push('/')
+          this.$router.push('/main2')
       },
       search (key) {
           this.key = key

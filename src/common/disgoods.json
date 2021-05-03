@@ -395,120 +395,17 @@
     ],
     "goodsList": [
         {
-            "id": 1,
-            "img": "http://ci.xiaohongshu.com/25f3b22b-fb4b-492e-8270-9515668b21c4@r_240w_240h.jpg",
-            "title": "柔软经典女神必选 LadyDiorOriginals手提包",
-            "desc": "DIOR由创始人Christian Dior于1946年在法国巴黎创立，迪奥公司涉及的时尚领域包括手袋、服装、鞋履、彩妆、护肤品、香水、珠宝配件等高档消费品。'Dior'在法国中是上帝和金子的组合，金色后来也成了DIOR品牌常见的代表色。DIOR继承着法国高级女装的传统，做工精细，迎合上流社会成熟女性的审美品位，象征着法国时装文化的精神。",
-            "newPrice": 25699,
-            "oldPrice": 28000,
+            "pid": 1,
+            "commodity_name": "柔软经典女神必选 LadyDiorOriginals手提包",
+            "media":{
+                "type": "",
+                "mediaUrl":""
+            },
+            "price": 25699,
             "inventory": 999,
-            "brandName": "迪奥 Dior",
-            "brandImg": "",
-            "color": ["粉","白"],
+            "color": [""],
             "size": [],
-            "weight": [],
-            "imgs": [
-                "http://ci.xiaohongshu.com/25f3b22b-fb4b-492e-8270-9515668b21c4@r_1280w_1280h.jpg",
-                "http://ci.xiaohongshu.com/e7ee3061-3d61-493b-a541-b574d3e99120@r_1280w_1280h.jpg",
-                "http://ci.xiaohongshu.com/dcf9224f-6bd5-4935-b2c7-a6ffc5220212@r_1280w_1280h.jpg"
-            ]
-        },
-        {
-            "id": 2,
-            "img": "http://ci.xiaohongshu.com/a972a3e2-0826-45a0-b36b-207be6327535@r_240w_240h.jpg",
-            "title": "忠贞不渝的爱情 镂空爱心吊坠成品手链",
-            "desc": "Pandora这个名字来源于希腊神话，代表着幸运和希望，所以好多妹子都把Pandora手链当作幸运手链，而且它可以是一条独一无二的幸运手链~600多种不同材质、风格的串饰可以随意组合，各种搭配法会带来很大的乐趣哦~基础的纯银材质，造型精致时尚，简约中带点俏皮女人味，小红薯们搭配什么衣服都可以轻松驾驭哟~",
-            "newPrice": 2129,
-            "oldPrice": 2241,
-            "inventory": 999,
-            "brandName": "潘多拉PANDORA",
-            "brandImg": "",
-            "color": [],
-            "size": ["17CM","18CM","19CM","20CM"],
-            "weight": [],
-            "imgs": [
-                "http://ci.xiaohongshu.com/a972a3e2-0826-45a0-b36b-207be6327535@r_1280w_1280h.jpg",
-                "http://ci.xiaohongshu.com/4849f06d-2b87-430e-94dd-9610bf17be63@r_1280w_1280h.jpg",
-                "http://ci.xiaohongshu.com/1246b990-2c8d-4c02-8bfa-4e35d4a1166e@r_1280w_1280h.jpg"
-            ]
-        },
-        {
-            "id": 3,
-            "img": "http://ci.xiaohongshu.com/f36609f9-6a23-4365-9b93-55c76c971d17@r_240w_240h.jpg",
-            "title": "唇膏手机癖一生推 LUSTRE LIPSTICK水漾润泽口红/唇膏",
-            "desc": "MAC的'弹子头'的特点就是颜色全，各型各色都想要，让很多小红薯们开始了漫漫的收集之旅。'MAC的口红总的来说性价比很高，味道也很好闻'，小红薯们用了觉得'妆感和持久度都一级棒'，'颜色饱和度超级棒'，'显色度好，颜色多，价格实在易于满足收集癖'。",
-            "newPrice": 132,
-            "oldPrice": 148,
-            "inventory": 999,
-            "brandName": "魅可 M.A.C",
-            "brandImg": "",
-            "color": ["Flamingo","SeeSheer","LadyBug","Lustering"],
-            "size": [],
-            "weight": ["3g"],
-            "imgs": [
-                "http://ci.xiaohongshu.com/f36609f9-6a23-4365-9b93-55c76c971d17@r_1280w_1280h.jpg",
-                "http://ci.xiaohongshu.com/e816ebe2-ea7f-437c-b2fc-9f3d50c21fd2@r_1280w_1280h.jpg",
-                "http://ci.xiaohongshu.com/9f3be019-3d3f-4954-b1c5-1a244d1384f0@r_1280w_1280h.jpg",
-                "http://ci.xiaohongshu.com/e02d33e2-e753-4a8c-8a6f-dedebd1c98c9@r_1280w_1280h.jpg"
-            ]
-        },
-        {
-            "id": 4,
-            "img": "http://ci.xiaohongshu.com/25f3b22b-fb4b-492e-8270-9515668b21c4@r_240w_240h.jpg",
-            "title": "柔软经典女神必选 LadyDiorOriginals手提包",
-            "desc": "DIOR由创始人Christian Dior于1946年在法国巴黎创立，迪奥公司涉及的时尚领域包括手袋、服装、鞋履、彩妆、护肤品、香水、珠宝配件等高档消费品。'Dior'在法国中是上帝和金子的组合，金色后来也成了DIOR品牌常见的代表色。DIOR继承着法国高级女装的传统，做工精细，迎合上流社会成熟女性的审美品位，象征着法国时装文化的精神。",
-            "newPrice": 25699,
-            "oldPrice": 28000,
-            "inventory": 999,
-            "brandName": "迪奥 Dior",
-            "brandImg": "",
-            "color": ["粉","白"],
-            "size": [],
-            "weight": [],
-            "imgs": [
-                "http://ci.xiaohongshu.com/25f3b22b-fb4b-492e-8270-9515668b21c4@r_1280w_1280h.jpg",
-                "http://ci.xiaohongshu.com/e7ee3061-3d61-493b-a541-b574d3e99120@r_1280w_1280h.jpg",
-                "http://ci.xiaohongshu.com/dcf9224f-6bd5-4935-b2c7-a6ffc5220212@r_1280w_1280h.jpg"
-            ]
-        },
-        {
-            "id": 5,
-            "img": "http://ci.xiaohongshu.com/a972a3e2-0826-45a0-b36b-207be6327535@r_240w_240h.jpg",
-            "title": "忠贞不渝的爱情 镂空爱心吊坠成品手链",
-            "desc": "Pandora这个名字来源于希腊神话，代表着幸运和希望，所以好多妹子都把Pandora手链当作幸运手链，而且它可以是一条独一无二的幸运手链~600多种不同材质、风格的串饰可以随意组合，各种搭配法会带来很大的乐趣哦~基础的纯银材质，造型精致时尚，简约中带点俏皮女人味，小红薯们搭配什么衣服都可以轻松驾驭哟~",
-            "newPrice": 2129,
-            "oldPrice": 2241,
-            "inventory": 999,
-            "brandName": "潘多拉PANDORA",
-            "brandImg": "",
-            "color": [],
-            "size": ["17CM","18CM","19CM","20CM"],
-            "weight": [],
-            "imgs": [
-                "http://ci.xiaohongshu.com/a972a3e2-0826-45a0-b36b-207be6327535@r_1280w_1280h.jpg",
-                "http://ci.xiaohongshu.com/4849f06d-2b87-430e-94dd-9610bf17be63@r_1280w_1280h.jpg",
-                "http://ci.xiaohongshu.com/1246b990-2c8d-4c02-8bfa-4e35d4a1166e@r_1280w_1280h.jpg"
-            ]
-        },
-        {
-            "id": 6,
-            "img": "http://ci.xiaohongshu.com/f36609f9-6a23-4365-9b93-55c76c971d17@r_240w_240h.jpg",
-            "title": "唇膏手机癖一生推 LUSTRE LIPSTICK水漾润泽口红/唇膏",
-            "desc": "MAC的'弹子头'的特点就是颜色全，各型各色都想要，让很多小红薯们开始了漫漫的收集之旅。'MAC的口红总的来说性价比很高，味道也很好闻'，小红薯们用了觉得'妆感和持久度都一级棒'，'颜色饱和度超级棒'，'显色度好，颜色多，价格实在易于满足收集癖'。",
-            "newPrice": 132,
-            "oldPrice": 148,
-            "inventory": 999,
-            "brandName": "魅可 M.A.C",
-            "brandImg": "",
-            "color": ["Flamingo","SeeSheer","LadyBug","Lustering"],
-            "size": [],
-            "weight": ["3g"],
-            "imgs": [
-                "http://ci.xiaohongshu.com/f36609f9-6a23-4365-9b93-55c76c971d17@r_1280w_1280h.jpg",
-                "http://ci.xiaohongshu.com/e816ebe2-ea7f-437c-b2fc-9f3d50c21fd2@r_1280w_1280h.jpg",
-                "http://ci.xiaohongshu.com/9f3be019-3d3f-4954-b1c5-1a244d1384f0@r_1280w_1280h.jpg",
-                "http://ci.xiaohongshu.com/e02d33e2-e753-4a8c-8a6f-dedebd1c98c9@r_1280w_1280h.jpg"
-            ]
+            "weight": []
         }
     ]
 }

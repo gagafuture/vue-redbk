@@ -5,16 +5,14 @@
           <li v-for="(item,index) in leftGoodsList" @click="choosedGoods(item)" :key="index">
             <div class="goods_item">
               <a class="img">
-                <img v-lazy="item.img" alt="">
+                <img v-lazy="'http://localhost:8254/image/'+item.media.mediaUrl" alt="">
               </a>
               <div class="desc">
-                <h3>{{item.title}}</h3>
-                <p>{{item.desc}}</p>
+                <h3>{{item.commodityName}}</h3>
               </div>
               <div class="detail">
                 <span class="d_price">
-                  <span class="big">￥{{item.newPrice}}</span>
-                  <span class="small">￥{{item.oldPrice}}</span>
+                  <span class="big">￥{{item.price}}</span>
                 </span>
                 <span class="brand">
                   <img src="../assets/br1.png" alt="">
@@ -29,16 +27,14 @@
           <li v-for="(item,index) in rightGoodsList" @click="choosedGoods(item)" :key="index">
             <div class="goods_item">
               <a class="img">
-                <img v-lazy="item.img" alt="">
+                <img v-lazy="'http://localhost:8254/image/'+item.media.mediaUrl" alt="">
               </a>
               <div class="desc">
-                <h3>{{item.title}}</h3>
-                <p>{{item.desc}}</p>
+                <h3>{{item.commodityName}}</h3>
               </div>
               <div class="detail">
                 <span class="d_price">
-                  <span class="big">￥{{item.newPrice}}</span>
-                  <span class="small">￥{{item.oldPrice}}</span>
+                  <span class="big">￥{{item.price}}</span>
                 </span>
                 <span class="brand">
                   <img src="../assets/br1.png" alt="">
@@ -67,13 +63,13 @@ export default {
     }
   },
   created() {
-    // axios.get('/goodsList')
-    //   .then(res => {
-    //     // console.log(res)
-    //     this.$store.dispatch('getGoodsList', res.data)
-    //   })
+    axios.get('/commodity/getAll')
+      .then(res => {
+        // console.log(res)
+        this.$store.dispatch('getGoodsList', res.data)
+      })
     // response.goodsList 请求
-    this.$store.dispatch('getGoodsList', response.goodsList)
+    // this.$store.dispatch('getGoodsList', response.goodsList)
   }
 }
 </script>

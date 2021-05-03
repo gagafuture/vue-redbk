@@ -11,6 +11,7 @@ import goods from '../pages/Goods'
 import search from '../pages/Search'
 import note from '../pages/Note'
 import cart from '../pages/Cart'
+import login from '../pages/Login/login'
 
 Vue.use(Router)
 
@@ -19,69 +20,78 @@ export default new Router({
   // mode: 'history',    //该模式下没有 # 前缀
   routes: [
     {
+      path:'/login',
+      component:login,
+
+    },
+    {
       path: '/',
-      component: main2
+      component: main2,
+      meta: { requiresAuth: true }
     },
     {
       path: '/main1',
       name: 'main1',
-      component: main1
+      component: main1,
+      meta: { requiresAuth: true },
+      children:[{
+        path: '/',
+        component: page1,
+        meta: { requiresAuth: true }
+      },{
+        path: 'page1/:id',
+        name: 'main1/page1',
+        component: page1,
+        meta: { requiresAuth: true }
+      }]
     },
     {
       path: '/main2',
       name: 'main2',
       component: main2,
+      meta: { requiresAuth: true },
       children: [
         {
           path: '/',
-          component: page1
-        },
-        {
-          path: 'page1',
-          name: 'page1',
-          component: page1
-        },
-        {
-          path:'page2',
-          name: 'page2',
-          component: page2
-        },
-        {
-          path:'page3',
-          name: 'page3',
-          component: page3
-        },
-        {
-          path:'page4',
-          name: 'page4',
-          component: page4
+          component: page1,
+          meta: { requiresAuth: true }
+        },{
+          path: 'page1/:id',
+          name: 'main2/page1',
+          component: page1,
+          meta: { requiresAuth: true }
         }
       ]
     },
     {
       path: '/main3',
       name: 'main3',
-      component: main3
+      component: main3,
+      meta: { requiresAuth: true }
     },
     {
       path: '/goods',
       name: 'goods',
-      component: goods
+      component: goods,
+      meta: { requiresAuth: true }
     },
     {
       path: '/search',
       name: 'search',
-      component: search
+      component: search,
+      meta: { requiresAuth: true }
     },
     {
       path: '/note',
       name: 'note',
-      component: note
+      component: note,
+      meta: { requiresAuth: true }
     },
     {
       path: '/cart',
       name: 'cart',
-      component: cart
+      component: cart,
+      meta: { requiresAuth: true }
     }
   ]
 })

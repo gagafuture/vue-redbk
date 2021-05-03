@@ -4,12 +4,12 @@
       <div class="noteContainer">
         <div class="note_con">
           <div class="note_pic">
-            <swiper :options="swiperOption" class="swiper-box">
-              <swiper-slide class="swiper-item" v-for="(img,index) in note.imgs" :key="index">
+              <!-- <swiper-slide class="swiper-item" v-for="(img,index) in note.imgs" :key="index">
                 <img v-lazy="img" alt="">
-              </swiper-slide>
-              <div class="swiper-pagination" slot="pagination"></div>
-            </swiper>
+              </swiper-slide> -->
+              <img class="media" v-if="note.media.type == 1" v-lazy="'http://localhost:8254/image/'+note.media.mediaUrl" />
+              <video class="media" v-else :src="'http://localhost:8254/image/'+note.media.mediaUrl" autoplay controls />
+              
           </div>
           <div class="note_icon">
             <div class="n_left" @click="hideNote">
@@ -22,25 +22,53 @@
         </div>
         <div class="note_header">
           <div class="n_user">
-            <img :src="note.avator" alt="">
-            <div>{{note.uname}}</div>
+            <img :src="'http://localhost:8254/image/'+note.user.image" alt="">
+            <div>{{note.user.name}}</div>
           </div>
           <div class="btn">
             <button>＋ 关注</button>
           </div>
         </div>
         <div class="n_desc">
-          {{note.desc}}
+          {{note.content}}
         </div>
         <div class="note_footer">
           <div class="adr">
             发布于{{note.adress}}
           </div>
           <div class="det">
-            <span class="d_time">{{note.time}}</span>
-            <span class="d_cl">{{note.collect}}次收藏 {{note.like}}次赞</span>
+            <span class="d_time">{{new Date(note.time)}}</span>
+            <span class="d_cl">{{10}}次收藏 {{23}}次赞</span>
           </div>
         </div>
+      </div>
+      <div v-for="(discuss,index) in note.discusses" :key="index">
+          <el-row :gutter="20">
+            <el-col :span="6" class="col"><img v-lazy="'http://localhost:8254/image/'+discuss.user.image" class="touxiang" /></el-col>
+            <el-col :span="18">
+                <el-row :gutter="20">
+                  <el-col :span="8">
+                    {{discuss.user.name}}
+                  </el-col>
+                  <el-col :span="16" style="heigh:20px; overflow:hidden">{{dataFormat(new Date(discuss.time))}}</el-col>
+                </el-row>
+                <el-row>
+                  <el-col :span="24" style="padding:10px">
+                      <div style="overflow:auto;word-wrap:break-word;">{{discuss.content}}</div>
+                  </el-col>
+                </el-row>
+            </el-col>
+            
+          </el-row>
+      </div>
+      <div class="dis">
+        <el-input
+          type="textarea"
+          :rows="2"
+          placeholder="请输入评论内容"
+          v-model="textarea">
+        </el-input>
+        <el-button  type="primary" @click="discuss" >评论</el-button>
       </div>
     </div>
   </transition>
@@ -50,13 +78,16 @@ import { swiper, swiperSlide } from 'vue-awesome-swiper'
 import 'swiper/dist/css/swiper.min.css'
 import BScroll from 'better-scroll'
 import { mapGetters } from 'vuex'
+import {getCookie} from '../cookie'
+import moment from 'moment';
 export default {
   data() {
     return {
       swiperOption: {
         pagination: '.swiper-pagination',
         paginationType: 'fraction'
-      }
+      },
+      textarea: ''
     }
   },
   computed: {
@@ -65,13 +96,30 @@ export default {
     ])
   },
   methods: {
+    dataFormat(data){
+      return moment(data).format('YYYY-MM-DD HH:mm:ss')
+    },
     hideNote () {
-      this.$router.push('/')
+      this.$router.back(-1)
     },
     _initScroll () {
       this.noteScroll = new BScroll(this.$refs.noteWrapper, {
         click: true,
         probeType: true
+      })
+    },
+    discuss () {
+      axios.post("/discuss/insert",{
+        userId:getCookie("pid"),
+        shareId: this.note.pid,
+        content: this.textarea
+      }).then(res => {
+        if(res.status == 200){
+          let date = this.note
+          date.discusses.push(res.data)
+          this.$store.dispatch('getNote',date)
+          this.textarea = ""
+        }
       })
     }
   },
@@ -97,6 +145,19 @@ export default {
 }
 </script>
 <style scoped>
+.col {
+  text-align: center;
+  padding: 10px;
+}
+.touxiang {
+  border: 1px solid black;
+  border-radius:50%;
+  height : 40px;
+  width: 40px
+}
+.dis {
+  top: 20px
+  }
 .note_page {
   width: 100%;
   top: 0;
@@ -124,14 +185,14 @@ export default {
   width: 100%;
 }
 
-.swiper-item img {
+.media {
   width: 100%;
-  height: 12rem;
+  height: auto;
 }
 
-.swiper-item img[lazy=loading] {
+.media[lazy=loading] {
   width: 100%;
-  height: 12rem;
+  height: auto;
 }
 
 .swiper-pagination-fraction {

@@ -1,8 +1,9 @@
 <template>
     <div class="panel">
-        <div class="header">
-            <img src="../assets/wm.png" alt="watermelon">
-            <div>用户名 {{user.name}}</div>
+        
+        <div class="header" >
+            <img :src="getUser=='' ? require('../assets/wm.png') : url " alt="" @click="login">
+            <div>{{getUser=="" ? '未登录' : getUser.userName}}</div>
         </div>
         <div class="content">
             <div class="con_item">
@@ -81,12 +82,37 @@
     </div>
 </template>
 <script>
+import {mapGetters} from 'vuex'
 export default {
     data() {
         return {
-            user: []
+            user: [],
+            dialogFormVisible: false,
+            form:{}
         }
     },
+    methods: {
+        login() {
+            if(this.$store.state.auth == ""){
+                this.$store.dispatch("isShow",true)
+            }
+        }
+    },
+    computed: {
+        ...mapGetters([
+            "getUser"
+        ]),
+        url(){
+            // let url =  URL.createObjectURL(this.getUser.imageUrl)
+            // console.log(url)
+            let url = "http://localhost:8254/image/"
+            if(this.getUser.imageUrl.length > 0){
+                url = url+this.getUser.imageUrl
+            }
+            
+            return url;
+        }
+    }
 }
 </script>
 <style lang="stylus" rel="stylesheet/stylus" scoped>

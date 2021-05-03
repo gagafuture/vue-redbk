@@ -15,22 +15,19 @@
             <div>
                 <div class="g_pic">
                     <swiper :options="swiperOption" class="swiper-box">
-                        <swiper-slide class="swiper-item" v-for="(img,index) in Goods.imgs" :key="index">
-                            <img v-lazy="img" alt="">
+                        <swiper-slide class="swiper-item">
+                            <img v-lazy="'http://localhost:8254/image/'+Goods.media.mediaUrl" alt="">
                         </swiper-slide>
                         <div class="swiper-pagination" slot="pagination"></div>
                     </swiper>
                 </div>
                 <div class="title">
                     <div class="t_header">
-                        <h3>{{Goods.title}}</h3>
-                        <span>
-                            来自  <a>{{Goods.brandName}}</a>
-                        </span>
+                        <h3>{{Goods.commodityName}}</h3>
+                        
                     </div>
                     <div class="t_price">
-                        <span class="big">￥{{Goods.newPrice}}</span>
-                        <span class="small">专柜价：￥{{Goods.oldPrice}}</span>
+                        <span class="big">￥{{Goods.price}}</span>
                     </div>
                 </div>
                 <div class="promise">
@@ -40,11 +37,8 @@
                     <mt-cell title="该商品小红书承诺七天保价" is-link>
                         <img slot="icon" src="../assets/g2.png" alt="" width="75px" height="25px">
                     </mt-cell>
-                    <mt-cell :title="choosedTitle" is-link @click.native="popupVisible=true"></mt-cell>
                 </div>
-                <div class="desc">
-                    {{Goods.desc}}
-                </div>
+               
             </div>
             <div class="g_footer">
                 <div class="gf_container">
@@ -81,47 +75,17 @@
                 <div class="chGoods_page">
                     <div class="cg_title">
                         <div class="t-img">
-                            <img :src="Goods.img" alt="">
+                            <img :src="'http://localhost:8254/image/'+Goods.media.mediaUrl" alt="">
                         </div>
                         <div class="t-text">
                             <h4>{{title}}</h4>
-                            <span>￥{{Goods.newPrice}}</span>
+                            <span>￥{{Goods.price}}</span>
                         </div>
                         <div class="t-icon">
                             <img src="../assets/close.png" @click="popupVisible=false">
                         </div>  
                     </div>
                     <div class="cg_content">
-                        <div class="opt-item" v-show="color">
-                            <div class="text">颜色：</div>
-                            <div class="options">
-                                <ul>
-                                    <li v-for="item in Goods.color" @click="selectedColor(item)">
-                                        <button :class="choosedColor==item?'isActive':''">{{item}}</button>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="opt-item" v-show="size">
-                            <div class="text">尺寸：</div>
-                            <div class="options">
-                                <ul>
-                                    <li v-for="item in Goods.size" @click="selectedSize(item)">
-                                        <button :class="choosedSize==item?'isActive':''">{{item}}</button>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="opt-item" v-show="weight">
-                            <div class="text">重量：</div>
-                            <div class="options">
-                                <ul>
-                                    <li v-for="item in Goods.weight" @click="selectedWeight(item)">
-                                        <button :class="choosedWeight==item?'isActive':''">{{item}}</button>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
                         <div class="g-quantity">
                             <span class="text">数量：</span>
                             <span class="action">
@@ -164,30 +128,30 @@ export default {
             'Goods',
             'title'
         ]),
-        choosedItems() {
-            return this.choosedColor + ' ' + this.choosedSize + ' ' + this.choosedWeight
-        },
-        choosedTitle () {
-            return '已选：' + this.choosedItems
-        },
-        color () {      //判断是否显示颜色选项
-            if( ""||this.$store.state.goods.choosedgoods.color[0] == undefined)
-                return false
-            else
-                return true
-        },
-        size () {       //判断是否显示尺寸选项
-            if( ""||this.$store.state.goods.choosedgoods.size[0] == undefined)
-                return false
-            else
-                return true
-        },
-        weight () {     //判断是否显示重量选项
-            if( ""||this.$store.state.goods.choosedgoods.weight[0] == undefined)
-                return false
-            else
-                return true
-        },
+        // choosedItems() {
+        //     return this.choosedColor + ' ' + this.choosedSize + ' ' + this.choosedWeight
+        // },
+        // choosedTitle () {
+        //     return '已选：' + this.choosedItems
+        // },
+        // color () {      //判断是否显示颜色选项
+        //     if( ""||this.$store.state.goods.choosedgoods.color[0] == undefined)
+        //         return false
+        //     else
+        //         return true
+        // },
+        // size () {       //判断是否显示尺寸选项
+        //     if( ""||this.$store.state.goods.choosedgoods.size[0] == undefined)
+        //         return false
+        //     else
+        //         return true
+        // },
+        // weight () {     //判断是否显示重量选项
+        //     if( ""||this.$store.state.goods.choosedgoods.weight[0] == undefined)
+        //         return false
+        //     else
+        //         return true
+        // },
         
     },
     methods: {
@@ -198,11 +162,13 @@ export default {
             this.popupVisible = true
         },
         addtocart(Goods) {
+            console.log(Goods)
             this.popupVisible = false
             this.hasGoods = true
             const quantity = this.quantity
             // const title = this.choosedItems
             this.$store.dispatch('addToCart',{ Goods,quantity })
+            // this.$store.dispatch('addToCart',{})
         },
         showCart () {       //切换到购物车页面
             this.$router.push('/cart')
