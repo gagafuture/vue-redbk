@@ -11,7 +11,7 @@ import goods from '../pages/Goods'
 import search from '../pages/Search'
 import note from '../pages/Note'
 import cart from '../pages/Cart'
-import login from '../pages/Login/login'
+import login from '../pages/login/login'
 
 Vue.use(Router)
 
