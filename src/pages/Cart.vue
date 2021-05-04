@@ -181,6 +181,10 @@ export default {
                 this.totalPrice = 0
             }
             // console.log(this.products.length)
+        },
+        isChoosed(){
+            this.totalPrice = 0
+            this.getTotalPrice()
         }
 	}
 
