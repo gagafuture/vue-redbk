@@ -16,7 +16,7 @@
                 <div class="g_pic">
                     <swiper :options="swiperOption" class="swiper-box">
                         <swiper-slide class="swiper-item">
-                            <img v-lazy="'http://localhost:8254/image/'+Goods.media.mediaUrl" alt="">
+                            <img v-lazy="'http://gagafuture.com:8254/image/'+Goods.media.mediaUrl" alt="">
                         </swiper-slide>
                         <div class="swiper-pagination" slot="pagination"></div>
                     </swiper>
@@ -75,7 +75,7 @@
                 <div class="chGoods_page">
                     <div class="cg_title">
                         <div class="t-img">
-                            <img :src="'http://localhost:8254/image/'+Goods.media.mediaUrl" alt="">
+                            <img :src="'http://gagafuture.com:8254/image/'+Goods.media.mediaUrl" alt="">
                         </div>
                         <div class="t-text">
                             <h4>{{title}}</h4>
