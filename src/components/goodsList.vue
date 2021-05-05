@@ -5,7 +5,7 @@
           <li v-for="(item,index) in leftGoodsList" @click="choosedGoods(item)" :key="index">
             <div class="goods_item">
               <a class="img">
-                <img v-lazy="'http://localhost:8254/image/'+item.media.mediaUrl" alt="">
+                <img v-lazy="'http://gagafuture.com:8254/image/'+item.media.mediaUrl" alt="">
               </a>
               <div class="desc">
                 <h3>{{item.commodityName}}</h3>
@@ -27,7 +27,7 @@
           <li v-for="(item,index) in rightGoodsList" @click="choosedGoods(item)" :key="index">
             <div class="goods_item">
               <a class="img">
-                <img v-lazy="'http://localhost:8254/image/'+item.media.mediaUrl" alt="">
+                <img v-lazy="'http://gagafuture.com:8254/image/'+item.media.mediaUrl" alt="">
               </a>
               <div class="desc">
                 <h3>{{item.commodityName}}</h3>

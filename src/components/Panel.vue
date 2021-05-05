@@ -105,7 +105,7 @@ export default {
         url(){
             // let url =  URL.createObjectURL(this.getUser.imageUrl)
             // console.log(url)
-            let url = "http://localhost:8254/image/"
+            let url = "http://gagafuture.com:8254/image/"
             if(this.getUser.imageUrl.length > 0){
                 url = url+this.getUser.imageUrl
             }

@@ -4,7 +4,7 @@
         <el-form :model="form" width="500px">
             <el-upload 
                     class="avatar-uploader-share"
-                    action="http://localhost:8254/media/upload"
+                    action="http://gagafuture.com:8254/media/upload"
                     :show-file-list="false"
                     :on-success="handleAvatarSuccess"
                     :before-upload="beforeAvatarUpload">
