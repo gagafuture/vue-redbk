@@ -94,7 +94,7 @@ export default {
       axios.post(str, {
         userName: this.form.username,
         password: this.form.password,
-        url: this.form.imageUrl
+        imageUrl: this.form.imageUrl
       }).then(res => {
           console.log(res)
           if(res.status == 200){
