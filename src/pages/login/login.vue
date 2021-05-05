@@ -6,7 +6,7 @@
         <el-form :model="form" width="500px">
             <el-upload v-if="!loginType"
                     class="avatar-uploader"
-                    action="http://localhost:8254/user/getImage"
+                    action="http://gagafuture.com:8254/user/getImage"
                     :show-file-list="false"
                     :on-success="handleAvatarSuccess"
                     :before-upload="beforeAvatarUpload">
