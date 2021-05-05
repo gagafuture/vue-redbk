@@ -5,7 +5,7 @@
                 <div class="left-list">
                     <ul>
                         <li v-for="(item,index) in leftDisList" @click="selectedNote(item)" :key="index">
-                            {{item}}
+                            <!-- {{item}} -->
                             <div class="note_item">
                                 <a class="img">
                                     <img v-if="item.media.type == 1" v-lazy="'http://gagafuture.com:8254/image/'+item.media.mediaUrl" alt="">
