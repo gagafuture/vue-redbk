@@ -3,6 +3,7 @@ import Vuex from 'vuex'
 import discovery from './modules/discovery'
 import goods from './modules/goods'
 import cart from './modules/cart'
+import edit from './modules/edit'
 import * as getters from './getters'
 import * as actions from './actions'
 import mutations from './mutations'
@@ -22,7 +23,8 @@ export default new Vuex.Store({
     modules: {
         discovery,
         goods,
-        cart
+        cart,
+        edit
     },
     getters,
     actions,

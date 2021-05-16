@@ -7,8 +7,8 @@
               <!-- <swiper-slide class="swiper-item" v-for="(img,index) in note.imgs" :key="index">
                 <img v-lazy="img" alt="">
               </swiper-slide> -->
-              <img class="media" v-if="note.media.type == 1" v-lazy="'http://gagafuture.com:8254/image/'+note.media.mediaUrl" />
-              <video class="media" v-else :src="'http://gagafuture.com:8254/image/'+note.media.mediaUrl" autoplay controls />
+              <img class="media" v-if="note.media.type == 1" v-lazy="baseURL+'image/'+note.media.mediaUrl" />
+              <video class="media" v-else :src="baseURL+'image/'+note.media.mediaUrl" autoplay controls />
               
           </div>
           <div class="note_icon">
@@ -22,7 +22,7 @@
         </div>
         <div class="note_header">
           <div class="n_user">
-            <img :src="'http://gagafuture.com:8254/image/'+note.user.image" alt="">
+            <img :src="baseURL+'image/'+note.user.image" alt="">
             <div>{{note.user.name}}</div>
           </div>
           <div class="btn">
@@ -44,7 +44,7 @@
       </div>
       <div v-for="(discuss,index) in note.discusses" :key="index">
           <el-row :gutter="20">
-            <el-col :span="6" class="col"><img v-lazy="'http://gagafuture.com:8254/image/'+discuss.user.image" class="touxiang" /></el-col>
+            <el-col :span="6" class="col"><img v-lazy="baseURL+'image/'+discuss.user.image" class="touxiang" /></el-col>
             <el-col :span="18">
                 <el-row :gutter="20">
                   <el-col :span="8">

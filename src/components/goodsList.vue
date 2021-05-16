@@ -5,7 +5,7 @@
           <li v-for="(item,index) in leftGoodsList" @click="choosedGoods(item)" :key="index">
             <div class="goods_item">
               <a class="img">
-                <img v-lazy="'http://gagafuture.com:8254/image/'+item.media.mediaUrl" alt="">
+                <img v-lazy="baseURL+'image/'+item.media.mediaUrl" alt="">
               </a>
               <div class="desc">
                 <h3>{{item.commodityName}}</h3>
@@ -27,7 +27,7 @@
           <li v-for="(item,index) in rightGoodsList" @click="choosedGoods(item)" :key="index">
             <div class="goods_item">
               <a class="img">
-                <img v-lazy="'http://gagafuture.com:8254/image/'+item.media.mediaUrl" alt="">
+                <img v-lazy="baseURL+'image/'+item.media.mediaUrl" alt="">
               </a>
               <div class="desc">
                 <h3>{{item.commodityName}}</h3>
@@ -63,7 +63,7 @@ export default {
     }
   },
   created() {
-    axios.get('/commodity/getAll')
+    axios.get('/commodity/getAll/0')
       .then(res => {
         // console.log(res)
         this.$store.dispatch('getGoodsList', res.data)

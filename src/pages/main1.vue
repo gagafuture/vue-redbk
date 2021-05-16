@@ -112,9 +112,9 @@ export default {
   },
   created () {
     this.$router.push({name: 'main1/page1', params: { id: '-1' }})
-    this.$nextTick( () => {
-      this._initScroll()
-    })
+    // this.$nextTick( () => {
+    //   this._initScroll()
+    // })
   }
 }
 </script>

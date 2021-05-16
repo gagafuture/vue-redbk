@@ -13,17 +13,20 @@ import MintUI from 'mint-ui'
 import 'mint-ui/lib/style.css'
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
-import fastclick from 'fastclick';
+// import fastclick from 'fastclick';
 
 
 Vue.use(VueTouch,{name: 'v-touch'})
 
-axios.defaults.baseURL = 'http://gagafuture.com:8254/'   //加前缀
+let baseUrl = process.env.NODE_ENV != "development" ? "http://gagafuture.com:8254/" : "http://localhost:8254/";
+
+axios.defaults.baseURL = baseUrl   //加前缀
 axios.defaults.withCredentials = true   //允许跨域
 global.axios = axios    //全局化
 
+Vue.prototype.baseURL = baseUrl
 Vue.config.productionTip = false
-fastclick.attach(document.body)
+// fastclick.attach(document.body)
 Vue.use(Mint);
 
 Vue.use(ElementUI)

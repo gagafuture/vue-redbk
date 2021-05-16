@@ -8,15 +8,15 @@
                             <!-- {{item}} -->
                             <div class="note_item">
                                 <a class="img">
-                                    <img v-if="item.media.type == 1" v-lazy="'http://gagafuture.com:8254/image/'+item.media.mediaUrl" alt="">
-                                    <video v-else-if="item.media.type == 2" :src="'http://gagafuture.com:8254/image/'+item.media.mediaUrl"  />
+                                    <img v-if="item.media.type == 1" v-lazy="baseURL+'image/'+item.media.mediaUrl" alt="">
+                                    <video v-else-if="item.media.type == 2" :src="baseURL+'image/'+item.media.mediaUrl"  />
                                 </a>
                                 <div class="desc">
                                     <p>{{item.content}}</p>
                                 </div>
                                 <div class="note">
                                     <a class="user">
-                                        <img v-lazy="'http://gagafuture.com:8254/image/'+item.user.image" alt="">
+                                        <img v-lazy="baseURL+'image/'+item.user.image" alt="">
                                         <span>{{item.user.name}}</span>
                                     </a>
                                     <a class="like">
@@ -33,15 +33,15 @@
                         <li v-for="(item,index) in rightDisList" @click="selectedNote(item)" :key="index">
                             <div class="note_item">
                                 <a class="img">
-                                    <img v-if="item.media.type == 1" v-lazy="'http://gagafuture.com:8254/image/'+item.media.mediaUrl" alt="">
-                                    <video v-else-if="item.media.type == 2" :src="'http://gagafuture.com:8254/image/'+item.media.mediaUrl"  />
+                                    <img v-if="item.media.type == 1" v-lazy="baseURL+'image/'+item.media.mediaUrl" alt="">
+                                    <video v-else-if="item.media.type == 2" :src="baseURL+'image/'+item.media.mediaUrl"  />
                                 </a>
                                 <div class="desc">
                                     <p>{{item.content}}</p>
                                 </div>
                                 <div class="note">
                                     <a class="user">
-                                        <img v-lazy="'http://gagafuture.com:8254/image/'+item.user.image" alt="">
+                                        <img v-lazy="baseURL+'image/'+item.user.image" alt="">
                                         <span>{{item.user.name}}</span>
                                     </a>
                                     <a class="like">
@@ -187,6 +187,6 @@ export default {
                             margin-top 0.13rem
                             margin-right 0.11rem
                             width 0.37rem
-                            height 0.37rem                  
+                            height 0.37rem
 </style>
 

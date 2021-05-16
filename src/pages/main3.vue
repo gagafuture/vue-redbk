@@ -2,124 +2,102 @@
   <div class="bought_page">
     <div class="bought" ref="boWrapper">
       <div>
-      <div class="b_header">
-        <swiper :options="swiperOption" class="swiper-box">
-          <swiper-slide class="swiper-item">
-            <img src="../assets/b1.jpg" alt="">
-          </swiper-slide>
-          <swiper-slide class="swiper-item">
-            <img src="../assets/b2.jpg" alt="">
-          </swiper-slide>
-          <swiper-slide class="swiper-item">
-            <img src="../assets/b3.jpg" alt="">
-          </swiper-slide>
-          <swiper-slide class="swiper-item">
-            <img src="../assets/b4.jpg" alt="">
-          </swiper-slide>
-          <div class="swiper-pagination" slot="pagination"></div>
-        </swiper>
-      </div>
-      <div class="b_option">
-        <img src="../assets/c1.png" alt="">
-      </div>
-      <div class="b_activity">
-        <div class="act_header">
-          <span class="a-left">
-            <h3>限时购</h3>
-          </span>
-          <span class="a-right">
-            全网低价 一贵就赔
-            <div class="a-icon">
-              <div class="r-arrow"></div>
-            </div>
-          </span>
+        <div class="b_header">
+          <swiper :options="swiperOption" class="swiper-box">
+            <swiper-slide class="swiper-item">
+              <img src="../assets/b1.jpg" alt="" />
+            </swiper-slide>
+            <swiper-slide class="swiper-item">
+              <img src="../assets/b2.jpg" alt="" />
+            </swiper-slide>
+            <swiper-slide class="swiper-item">
+              <img src="../assets/b3.jpg" alt="" />
+            </swiper-slide>
+            <swiper-slide class="swiper-item">
+              <img src="../assets/b4.jpg" alt="" />
+            </swiper-slide>
+            <div class="swiper-pagination" slot="pagination"></div>
+          </swiper>
         </div>
-        <div class="act_con">
-          <div class="act-item">
-            <img src="../assets/1.png" alt="">
-            <div class="price">
-              <div class="new-price">81元</div>
-              <div class="old-price">104元</div>
-            </div>
-          </div>
-          <div class="act-item">
-            <img src="../assets/2.png" alt="">
-            <div class="price">
-              <div class="new-price">118元</div>
-              <div class="old-price">175元</div>
-            </div>
-          </div>
-          <div class="act-item">
-            <img src="../assets/3.png" alt="">
-            <div class="price">
-              <div class="new-price">99元</div>
-              <div class="old-price">128元</div>
-            </div>
-          </div>
+        <div>
+          <el-row style="height: 80px; text-align: center">
+            <el-col @click.native="get(1)" :span="8">
+              <img style="height: 60px" src="../assets/蔬菜.png" />
+              <p>蔬菜类</p>
+            </el-col>
+            <el-col @click.native="get(2)" :span="8">
+              <img style="height: 60px" src="../assets/肉.png" />
+              <p>肉食类</p>
+            </el-col>
+            <el-col @click.native="get(3)" :span="8">
+              <img style="height: 60px" src="../assets/水果.png" />
+              <p>水果类</p>
+            </el-col>
+          </el-row>
+          <el-row style="height: 80px; text-align: center">
+            <el-col @click.native="get(4)" :span="8">
+              <img style="height: 60px" src="../assets/调味料.png" />
+              <p>调味类</p>
+            </el-col>
+            <el-col @click.native="get(5)" :span="8">
+              <img style="height: 60px" src="../assets/零食.png" />
+              <p>零食类</p>
+            </el-col>
+            <el-col @click.native="get(0)" :span="8">
+              <img style="height: 60px" src="../assets/全部.png" />
+              <p>全部</p>
+            </el-col>
+          </el-row>
         </div>
-      </div>
-      <div class="b_actmore">
-        <div class="a-hot">
-          <span class="a-desc">
-            <h3>热卖榜</h3>
-            每天更新 热卖排行
-          </span>
-          <span class="a-img">
-            <img src="../assets/4.png" alt="">
-          </span>
-        </div>
-        <div class="a-ticket">
-          <span class="a-desc">
-            <h3>领券中心</h3>
-            为您搜索全站福利
-          </span>
-          <span class="a-img">
-            <img src="../assets/5.png" alt="">
-          </span>
-        </div>
-      </div>
-      <goodslist></goodslist>
+        <goodslist></goodslist>
       </div>
     </div>
   </div>
 </template>
 <script>
-import BScroll from 'better-scroll'
-import { swiper, swiperSlide } from 'vue-awesome-swiper'
-import 'swiper/dist/css/swiper.min.css'
-import goodslist from '../components/goodsList'
+import BScroll from "better-scroll";
+import { swiper, swiperSlide } from "vue-awesome-swiper";
+import "swiper/dist/css/swiper.min.css";
+import goodslist from "../components/goodsList";
 export default {
   data() {
     return {
       swiperOption: {
-        pagination: '.swiper-pagination',
-        paginationType: 'fraction',
+        pagination: ".swiper-pagination",
+        paginationType: "fraction",
         autoplay: 5000,
         autoplayDisableOnInteraction: false,
-      }
-    }
+      },
+    };
   },
   components: {
     swiper,
     swiperSlide,
-    goodslist
+    goodslist,
   },
   methods: {
-    _initScroll () {
+    _initScroll() {
       this.boughtScroll = new BScroll(this.$refs.boWrapper, {
         click: true,
-        probeType: 3
-      })
-    }
+        probeType: 3,
+      });
+    },
+    get(id) {
+      console.log("11")
+      axios.get("/commodity/getAll/" + id).then((res) => {
+        // console.log(res)
+        this.$store.dispatch("getGoodsList", res.data);
+      });
+    },
   },
-  created () {
-    this.$nextTick( () => {
-      this._initScroll()
-    }) 
-  }
-}
+  created() {
+    this.$nextTick(() => {
+      this._initScroll();
+    });
+  },
+};
 </script>
-<style>
+<style scped>
 .bought {
   width: 100%;
   top: 2.8rem;
@@ -135,7 +113,7 @@ export default {
 
 .swiper-item img {
   width: 100%;
-  height: 4.80rem;
+  height: 4.8rem;
 }
 
 .swiper-pagination-fraction {
@@ -154,7 +132,7 @@ export default {
 
 .b_activity {
   width: 94%;
-  margin-top: 0.30rem;
+  margin-top: 0.3rem;
   margin-left: auto;
   margin-right: auto;
   /* border: 1px solid #000; */
@@ -272,7 +250,7 @@ export default {
   padding-top: 0.47rem;
   color: #666666;
   font-size: 0.46rem;
-  font-weight:bold;
+  font-weight: bold;
 }
 
 .a-ticket {
@@ -298,6 +276,4 @@ export default {
   margin-top: 0.44rem;
   margin-right: 0.24rem;
 }
-
-
 </style>

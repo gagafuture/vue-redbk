@@ -2,6 +2,8 @@
   <div id="app">
     <navbar v-show="isNav"></navbar>
     <login/>
+    <edit />
+    <password />
     <v-touch 
         v-on:swipeleft="onSwipeLeft" 
         v-on:swiperight="onSwipeRight" 
@@ -12,6 +14,8 @@
 </template>
 <script>
 import login from './pages/login/login'
+import edit from './pages/login/edit'
+import password from './pages/login/password'
 import navbar from './components/navBar.vue'
 export default {
   computed: {
@@ -43,7 +47,9 @@ export default {
   },
   components: {
     navbar,
-    login
+    login,
+    edit,
+    password
   },
   watch: {
     '$route' () {

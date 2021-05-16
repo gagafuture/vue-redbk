@@ -19,7 +19,7 @@
                             <button class="btn" :class="isChoosed?'isActive':''" @click="isChoosed=!isChoosed"></button>
                         </div>
                         <div class="img">
-                            <img :src="'http://gagafuture.com:8254/image/'+p.img" alt="">
+                            <img :src="baseURL+'image/'+p.img" alt="">
                         </div>
                         <div class="detail">
                             <div class="title">{{p.title}}</div>

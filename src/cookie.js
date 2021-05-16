@@ -2,7 +2,7 @@
 export function setCookie(c_name, value, expire) {
   var date = new Date()
   date.setSeconds(date.getSeconds() + expire)
-  document.cookie = c_name + "=" + escape(value) + "; expires=" + date.toGMTString()
+  document.cookie = c_name + "=" + escape(value) + "; expires=" + date.toGMTString()+';path=/'
   //console.log(document.cookie)
 }
 
@@ -24,5 +24,10 @@ export function getCookie(c_name) {
 
 /*删除cookie*/
 export function delCookie(c_name) {
-  setCookie(c_name, "", -1)
+  var exp = new Date();
+  exp.setSeconds(exp.getSeconds() - 1)
+  var cval = getCookie(c_name);
+  if (cval != null){
+    document.cookie = c_name + "=" + cval + ";expires=" + exp.toGMTString()+';path=/';
+  }
 }

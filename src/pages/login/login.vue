@@ -1,12 +1,10 @@
 <template lang="">
-
     <div>
-
        <el-dialog  :visible.sync="dialogFormVisible" @close="close" width='80%'>
         <el-form :model="form" width="500px">
             <el-upload v-if="!loginType"
                     class="avatar-uploader"
-                    action="http://gagafuture.com:8254/user/getImage"
+                    :action="baseURL+'user/getImage'"
                     :show-file-list="false"
                     :on-success="handleAvatarSuccess"
                     :before-upload="beforeAvatarUpload">

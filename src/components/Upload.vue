@@ -4,7 +4,7 @@
         <el-form :model="form" width="500px">
             <el-upload 
                     class="avatar-uploader-share"
-                    action="http://gagafuture.com:8254/media/upload"
+                    :action="baseURL+'media/upload'"
                     :show-file-list="false"
                     :on-success="handleAvatarSuccess"
                     :before-upload="beforeAvatarUpload">
@@ -72,18 +72,33 @@ export default {
   data() {
     return {
       form: {
-        imageUrl:"",
+        imageUrl: "",
       },
-      options: [{
-          value: '1',
-          label: '特色'
-        }, {
-          value: '2',
-          label: '家常'
-        }],
-      value: '1',
-      textarea:"",
-      type:"",
+      options: [
+        {
+          value: "1",
+          label: "中国传统美食",
+        },
+        {
+          value: "2",
+          label: "西方美食",
+        },
+        {
+          value: "3",
+          label: "家常菜",
+        },
+        {
+          value: "4",
+          label: "美容菜谱",
+        },
+        {
+          value: "5",
+          label: "养生饮食",
+        },
+      ],
+      value: "1",
+      textarea: "",
+      type: "",
       imageUrl: "",
     };
   },
@@ -94,69 +109,67 @@ export default {
     },
   },
   methods: {
-
     close() {
-      this.$store.dispatch("isShowUpload",false);
-      
+      this.$store.dispatch("isShowUpload", false);
     },
     share() {
-      if(this.$store.auth == ""){
+      if (this.$store.auth == "") {
         this.$message({
-          message: '请先登录在分享！',
-          type: 'warning'
+          message: "请先登录在分享！",
+          type: "warning",
         });
         return false;
       }
-      let str = '/share/save'
+      let str = "/share/save";
       console.log(str);
-      axios.post(str, {
-        userId:getCookie("pid"),
-        content:this.textarea,
-        classification:this.value,
-        media:{
-          type:this.type === "image" ? 1 : 2,
-          mediaName:this.form.imageUrl,
-          mediaUrl:this.form.imageUrl
-        }
-      }).then(res => {
-          console.log(res)
-          if(res.status == 200){
-              //登录成功
-              this.$message({
-                message: '成功',
-                type: 'success'
-                });
-                location.reload();
-                this.form = {
-                  imageUrl:"",
-                }
-                this.value = "1"
-                this.textarea = "",
-                this.type="",
-                this.imageUrl=  ""
-          }else {
-              this.$message.error("失败啦，请重试")
+      axios
+        .post(str, {
+          userId: getCookie("pid"),
+          content: this.textarea,
+          classification: this.value,
+          media: {
+            type: this.type === "image" ? 1 : 2,
+            mediaName: this.form.imageUrl,
+            mediaUrl: this.form.imageUrl,
+          },
+        })
+        .then((res) => {
+          console.log(res);
+          if (res.status == 200) {
+            //登录成功
+            this.$message({
+              message: "成功",
+              type: "success",
+            });
+            location.reload();
+            this.form = {
+              imageUrl: "",
+            };
+            this.value = "1";
+            (this.textarea = ""), (this.type = ""), (this.imageUrl = "");
+          } else {
+            this.$message.error("失败啦，请重试");
           }
-          _this.close()
-      });
+          _this.close();
+        });
     },
     handleAvatarSuccess(res, file) {
-      this.form.imageUrl = res
-      console.log(file)
+      this.form.imageUrl = res;
+      console.log(file);
       this.imageUrl = URL.createObjectURL(file.raw);
     },
     beforeAvatarUpload(file) {
-    //   const isJPG = file.type === "image/jpeg";
+      //   const isJPG = file.type === "image/jpeg";
       const isLt2M = file.size / 1024 / 1024 < 50;
-        this.type = file.type.indexOf('image') != -1 ? "image" : "video"
-    //   if (!isJPG) {
-    //     this.$message.error("上传头像图片只能是 JPG 格式!");
-    //   }
+      this.type = file.type.indexOf("image") != -1 ? "image" : "video";
+      //   if (!isJPG) {
+      //     this.$message.error("上传头像图片只能是 JPG 格式!");
+      //   }
       if (!isLt2M) {
         this.$message.error("上传头像图片大小不能超过 2MB!");
       }
-      console.log(file)
-      return  isLt2M;
+      console.log(file);
+      return isLt2M;
     },
   },
 };
