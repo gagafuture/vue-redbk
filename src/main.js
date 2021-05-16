@@ -18,7 +18,7 @@ import 'element-ui/lib/theme-chalk/index.css';
 
 Vue.use(VueTouch,{name: 'v-touch'})
 
-let baseUrl = process.env.NODE_ENV != "development" ? "http://gagafuture.com:8254/" : "http://localhost:8254/";
+let baseUrl = process.env.NODE_ENV == "development" ? "http://gagafuture.com:8254/" : "http://localhost:8254/";
 
 axios.defaults.baseURL = baseUrl   //加前缀
 axios.defaults.withCredentials = true   //允许跨域
